@@ -10,6 +10,7 @@ public class Card : ScriptableObject
     public string CardName;
     public int HealthPoints;
     public int AttackPoints;
+    public int ManaPoints;
     public string Effect;
-    public int CardID;
+    public int EffectID;
 }

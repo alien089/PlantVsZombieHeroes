@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adf8dc5341eaa14caae6264a36db63a, type: 3}
+  m_Name: Card 1 p
+  m_EditorClassIdentifier: 
+  PhysicBody: {fileID: 6038448871273730820, guid: a6c20965aa50e004094ed52e73ff2027, type: 3}
+  UIBody: {fileID: 6820154256813876608, guid: d6d017b64f12b114f98126f730872e45, type: 3}
+  CardName: carta 1
+  HealthPoints: 2
+  AttackPoints: 2
+  ManaPoints: 1
+  Effect: aggiunge 1 di vita alle carte ai fianchi
+  EffectID: 0

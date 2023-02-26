@@ -5,9 +5,10 @@ using UnityEngine;
 public enum TurnPhases
 {
     DRAW,
-    ENEMY,
     PLAYER,
-    ENEMYABILITY,
+    ENEMY,
     PLAYERABILITY,
+    ENEMYABILITY,
     FIGHT,
+    END
 }

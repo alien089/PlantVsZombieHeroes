@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adf8dc5341eaa14caae6264a36db63a, type: 3}
+  m_Name: Card 3 p
+  m_EditorClassIdentifier: 
+  PhysicBody: {fileID: 4069448444978780717, guid: 9326e5224c3c40f4b9d283027670ff8d, type: 3}
+  UIBody: {fileID: 2834922195189678771, guid: 89df9b9023b7a8b4eb2e073c08572067, type: 3}
+  CardName: carta 3
+  HealthPoints: 1
+  AttackPoints: 1
+  ManaPoints: 3
+  Effect: si distrugge al psoto di una a fianco
+  EffectID: 2
