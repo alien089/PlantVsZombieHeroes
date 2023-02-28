@@ -10,10 +10,14 @@ public class CardController : MonoBehaviour
     public StageManager StageManager;
     public TMP_Text Health;
     public TMP_Text Attack;
+    public int Line;
     public int HealthPoints;
     public int AttackPoints;
     public bool DeathFinished = false;
     public bool FightFinished = false;
+
+    public TurnPhases PhaseFightLine;
+    public TurnPhases PhaseEndLine;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,7 +31,8 @@ public class CardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(StageManager.m_CurrentPhase == TurnPhases.FIGHT && FightFinished == false)
+        //check if there is an enemy in front of the card, if there is also attack
+        if (StageManager.m_CurrentPhase == PhaseFightLine && FightFinished == false)
         {
             ResolveEffect();
             RaycastHit hit;
@@ -35,22 +40,20 @@ public class CardController : MonoBehaviour
             {
                 if(hit.collider.CompareTag("EnemyCard") && transform.CompareTag("PlayerCard"))
                 {
-                    hit.collider.GetComponent<CardController>().HealthPoints -= AttackPoints;
-                    hit.collider.GetComponent<CardController>().Health.text = hit.collider.GetComponent<CardController>().HealthPoints.ToString();
+                    DoAttack(hit);    
                 }
             }
             else if (Physics.Raycast(transform.position, -transform.forward, out hit))
             {
                 if (hit.collider.CompareTag("PlayerCard") && transform.CompareTag("EnemyCard"))
                 {
-                    hit.collider.GetComponent<CardController>().HealthPoints -= AttackPoints;
-                    hit.collider.GetComponent<CardController>().Health.text = hit.collider.GetComponent<CardController>().HealthPoints.ToString();
+                    DoAttack(hit);    
                 }
             }
             
             FightFinished = true;
         }
-        else if(StageManager.m_CurrentPhase == TurnPhases.END && DeathFinished == false)
+        else if(StageManager.m_CurrentPhase == PhaseEndLine && DeathFinished == false)
         {
             if (HealthPoints <= 0)
                 Destroy(gameObject);
@@ -61,5 +64,11 @@ public class CardController : MonoBehaviour
     private void ResolveEffect()
     {
         
+    }
+
+    private void DoAttack(RaycastHit hit)
+    {
+        hit.collider.GetComponent<CardController>().HealthPoints -= AttackPoints;
+        hit.collider.GetComponent<CardController>().Health.text = hit.collider.GetComponent<CardController>().HealthPoints.ToString();
     }
 }

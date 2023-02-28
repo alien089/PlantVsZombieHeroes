@@ -9,6 +9,8 @@ public enum TurnPhases
     ENEMY,
     PLAYERABILITY,
     ENEMYABILITY,
-    FIGHT,
-    END
+    FIGHT1,
+    END1,
+    FIGHT2,
+    END2
 }
