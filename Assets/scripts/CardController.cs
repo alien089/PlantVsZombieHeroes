@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class CardController : MonoBehaviour
 
     public TurnPhases PhaseFightLine;
     public TurnPhases PhaseEndLine;
+
+    private string m_TypeCard;
+    private Vector3 m_CardForward;
+    private string m_MyTag;
+    private string m_EnemyTag;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +32,8 @@ public class CardController : MonoBehaviour
 
         Attack.text = AttackPoints.ToString();
         Health.text = HealthPoints.ToString();
+
+        CheckWhichCard();
     }
 
     // Update is called once per frame
@@ -36,18 +44,15 @@ public class CardController : MonoBehaviour
         {
             ResolveEffect();
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit))
+            if(Physics.Raycast(transform.position, m_CardForward, out hit))
             {
-                if(hit.collider.CompareTag("EnemyCard") && transform.CompareTag("PlayerCard"))
+                if(hit.collider.CompareTag(m_EnemyTag) && transform.CompareTag(m_MyTag))
                 {
-                    DoAttack(hit);    
+                    CardAttack(hit);    
                 }
-            }
-            else if (Physics.Raycast(transform.position, -transform.forward, out hit))
-            {
-                if (hit.collider.CompareTag("PlayerCard") && transform.CompareTag("EnemyCard"))
+                if (hit.collider.CompareTag("Player") && transform.CompareTag(m_MyTag))
                 {
-                    DoAttack(hit);    
+                    PlayerAttack(hit);
                 }
             }
             
@@ -66,9 +71,33 @@ public class CardController : MonoBehaviour
         
     }
 
-    private void DoAttack(RaycastHit hit)
+    private void CardAttack(RaycastHit hit)
     {
         hit.collider.GetComponent<CardController>().HealthPoints -= AttackPoints;
         hit.collider.GetComponent<CardController>().Health.text = hit.collider.GetComponent<CardController>().HealthPoints.ToString();
+    }
+
+    private void PlayerAttack(RaycastHit hit)
+    {
+        hit.collider.GetComponent<PhysicPlayer>().Player.HealthPoints -= AttackPoints;
+        hit.collider.GetComponent<PhysicPlayer>().Player.Health.text = hit.collider.GetComponent<PhysicPlayer>().Player.HealthPoints.ToString();
+    }
+
+    private void CheckWhichCard()
+    {
+        m_TypeCard = ThisCard.name.Remove(0, 7);
+
+        if (m_TypeCard == "p")
+        {
+            m_CardForward = transform.forward;
+            m_MyTag = "PlayerCard";
+            m_EnemyTag = "EnemyCard";
+        }
+        else
+        {
+            m_CardForward = -transform.forward;
+            m_MyTag = "EnemyCard";
+            m_EnemyTag = "PlayerCard";
+        }
     }
 }

@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     public GameObject PlayerHand;
     public GameObject MyBoard;
     public GameObject EnemyBoard;
-    public GameObject Health;
-    public GameObject Mana;
+    public Text Health;
+    public Text Mana;
+    public GameObject PlayerBody;
     public bool Player = false;
     public string test = "";
 
@@ -38,7 +39,8 @@ public class PlayerController : MonoBehaviour
     /// <param name="CardList"></param>
     public void StartPhase(List<Card> CardList)
     {
-        Mana.GetComponent<Text>().text = ActualManaPoints.ToString();
+        Mana.text = ActualManaPoints.ToString();
+        Health.text = HealthPoints.ToString();
 
         for (int i = 0; i < 5; i++)
         {
@@ -72,12 +74,12 @@ public class PlayerController : MonoBehaviour
     public void PlayerPhase()
     {
         if (Player)
-            for (int j = 0; j < transform.GetChild(7).childCount; j++)
-                transform.GetChild(7).GetChild(j).gameObject.SetActive(true);
+            for (int j = 0; j < transform.GetChild(8).childCount; j++)
+                transform.GetChild(8).GetChild(j).gameObject.SetActive(true);
 
         if (!Player)
-            for (int j = 0; j < transform.GetChild(7).childCount; j++)
-                transform.GetChild(7).GetChild(j).gameObject.SetActive(false);
+            for (int j = 0; j < transform.GetChild(8).childCount; j++)
+                transform.GetChild(8).GetChild(j).gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -86,12 +88,12 @@ public class PlayerController : MonoBehaviour
     public void EnemyPhase()
     {
         if (Player)
-            for (int j = 0; j < transform.GetChild(7).childCount; j++)
-                transform.GetChild(7).GetChild(j).gameObject.SetActive(false);
+            for (int j = 0; j < transform.GetChild(8).childCount; j++)
+                transform.GetChild(8).GetChild(j).gameObject.SetActive(false);
 
         if (!Player)
-            for (int j = 0; j < transform.GetChild(7).childCount; j++)
-                transform.GetChild(7).GetChild(j).gameObject.SetActive(true);
+            for (int j = 0; j < transform.GetChild(8).childCount; j++)
+                transform.GetChild(8).GetChild(j).gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -99,8 +101,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void PlayerAbilityPhase()
     {
-        for (int j = 0; j < transform.GetChild(7).childCount; j++)
-            transform.GetChild(7).GetChild(j).gameObject.SetActive(false);
+        for (int j = 0; j < transform.GetChild(8).childCount; j++)
+            transform.GetChild(8).GetChild(j).gameObject.SetActive(false);
     }
 
 
@@ -153,8 +155,8 @@ public class PlayerController : MonoBehaviour
             m_ChoosedInt = i;
             Accepted = true;
 
-            for (int j = 0; j < transform.GetChild(6).childCount; j++)
-                transform.GetChild(6).GetChild(j).gameObject.SetActive(true);
+            for (int j = 0; j < transform.GetChild(7).childCount; j++)
+                transform.GetChild(7).GetChild(j).gameObject.SetActive(true);
         }
     }
 
@@ -166,8 +168,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Accepted)
         {
-            for (int j = 0; j < transform.GetChild(6).childCount; j++)
-                transform.GetChild(6).GetChild(j).gameObject.SetActive(false);
+            for (int j = 0; j < transform.GetChild(7).childCount; j++)
+                transform.GetChild(7).GetChild(j).gameObject.SetActive(false);
 
             string positionString = linkedPosition.name.Remove(0, 8);
             int position = Convert.ToInt32(positionString.Remove(1, 1));
@@ -200,6 +202,12 @@ public class PlayerController : MonoBehaviour
             Destroy(PhysicHand[m_ChoosedInt]);
             Accepted = false;
         }
+    }
+
+    public void HideBoard()
+    {
+        for (int j = 0; j < transform.GetChild(7).childCount; j++)
+            transform.GetChild(7).GetChild(j).gameObject.SetActive(false);
     }
 
     /// <summary>
