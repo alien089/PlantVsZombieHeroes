@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Card">
-    <Position X="3.25" Y="1.75" Width="1.5" />
+    <Position X="2" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAQAgAACAAAAAAAAAAAAAAAAAAgAAQAQAAAAQ=</HashCode>
       <FileName>Assets\scripts\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CardController">
-    <Position X="5" Y="1.75" Width="1.5" />
+    <Position X="3.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AMQgGAAIQAAEgAgAAAAAAAAACIAAAAgEAIgAgQABAEA=</HashCode>
+      <HashCode>AMQgGAAIQAAEgAgAAAAAIAAACIAAAAgEAIgAgQABAEA=</HashCode>
       <FileName>Assets\scripts\CardController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PhysicPlayer">
-    <Position X="5" Y="7.25" Width="1.5" />
+    <Position X="3.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Assets\scripts\PhysicPlayer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PlayerController">
-    <Position X="6.75" Y="1.75" Width="1.5" />
+    <Position X="5.5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EGAASAgASAgAQAAMAAAIAAAAAKgqADE4AgCAIQISAAA=</HashCode>
       <FileName>Assets\scripts\PlayerController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StageManager">
-    <Position X="8.5" Y="1.75" Width="1.5" />
+    <Position X="7.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACQAAgAAACEQAAAAAAAAAAAAIAAAAAAAAAAAAQJAgAA=</HashCode>
       <FileName>Assets\scripts\StageManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="TurnPhases">
-    <Position X="3.25" Y="4.5" Width="1.5" />
+    <Position X="2" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAMAAAAAAAAAAAADAAAAAAAAAIAAICAAAAA=</HashCode>
       <FileName>Assets\scripts\TurnPhases.cs</FileName>

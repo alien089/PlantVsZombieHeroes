@@ -24,6 +24,7 @@ public class CardController : MonoBehaviour
     private Vector3 m_CardForward;
     private string m_MyTag;
     private string m_EnemyTag;
+    private int m_LayerMask;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,7 +34,7 @@ public class CardController : MonoBehaviour
         Attack.text = AttackPoints.ToString();
         Health.text = HealthPoints.ToString();
 
-        CheckWhichCard();
+        CheckCardSide();
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class CardController : MonoBehaviour
         {
             ResolveEffect();
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, m_CardForward, out hit))
+            if(Physics.Raycast(transform.position, m_CardForward, out hit, 10000, m_LayerMask))
             {
                 if(hit.collider.CompareTag(m_EnemyTag) && transform.CompareTag(m_MyTag))
                 {
@@ -83,7 +84,7 @@ public class CardController : MonoBehaviour
         hit.collider.GetComponent<PhysicPlayer>().Player.Health.text = hit.collider.GetComponent<PhysicPlayer>().Player.HealthPoints.ToString();
     }
 
-    private void CheckWhichCard()
+    private void CheckCardSide()
     {
         m_TypeCard = ThisCard.name.Remove(0, 7);
 
@@ -92,12 +93,16 @@ public class CardController : MonoBehaviour
             m_CardForward = transform.forward;
             m_MyTag = "PlayerCard";
             m_EnemyTag = "EnemyCard";
+            m_LayerMask = 1 << 7;
+            gameObject.layer = 6;
         }
         else
         {
             m_CardForward = -transform.forward;
             m_MyTag = "EnemyCard";
             m_EnemyTag = "PlayerCard";
+            m_LayerMask = 1 << 6;
+            gameObject.layer = 7;
         }
     }
 }
